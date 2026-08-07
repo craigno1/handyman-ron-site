@@ -81,7 +81,7 @@ export function Contact() {
                 <div>
                   <h3 className="text-sm font-bold text-muted-foreground uppercase tracking-wider mb-1">Service Area</h3>
                   <p className="text-xl font-medium text-foreground">
-                    Tardale, Morwell, Traralgon,<br />and surrounding Gippsland areas.
+                    Taradale, Castlemaine, Kyneton,<br />Malmsbury, Woodend, and the<br />wider Mount Alexander Shire<br />and Macedon Ranges.
                   </p>
                 </div>
               </div>

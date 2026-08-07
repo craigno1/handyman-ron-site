@@ -9,7 +9,7 @@ import { Footer } from "../components/Footer";
 export default function Home() {
   // Update meta tags for SEO
   useEffect(() => {
-    document.title = "Handyman Ron | Carpentry & Renovations in Tardale, VIC";
+    document.title = "Handyman Ron | Builder & Tradesman in Taradale, Mount Alexander Shire";
     
     // Add meta description
     let metaDescription = document.querySelector('meta[name="description"]');
@@ -18,7 +18,7 @@ export default function Home() {
       metaDescription.setAttribute('name', 'description');
       document.head.appendChild(metaDescription);
     }
-    metaDescription.setAttribute('content', 'Professional handyman and licensed builder in Tardale, VIC. Specializing in carpentry, plastering, renovations, extensions, and tiny houses.');
+    metaDescription.setAttribute('content', 'Licensed builder and tradesman based in Taradale, VIC. 40+ years experience in carpentry, plastering, renovations, extensions, and tiny house building across Mount Alexander Shire and Macedon Ranges.');
   }, []);
 
   return (

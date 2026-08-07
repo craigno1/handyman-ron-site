@@ -11,7 +11,7 @@ export function Footer() {
               Handyman<span className="text-primary">Ron</span>
             </div>
             <p className="text-muted-foreground text-sm font-medium">
-              Tardale, Victoria
+              Taradale, Victoria
             </p>
           </div>
           

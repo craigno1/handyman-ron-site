@@ -5,13 +5,13 @@ export function WhyChooseMe() {
   const reasons = [
     {
       icon: Clock,
-      title: "20+ Years on the Tools",
-      description: "I've seen it all and fixed it all. No guesswork, just solid experience applied to your project."
+      title: "40+ Years on the Tools",
+      description: "Four decades of hands-on trade work across central Victoria. No guesswork, no learning on your job — just deep experience applied to your project."
     },
     {
       icon: MapPin,
-      title: "Gippsland Local",
-      description: "Based right here in Tardale. I know the area, the suppliers, and what local houses need."
+      title: "Central Victoria Local",
+      description: "Based in Taradale, in the heart of Mount Alexander Shire. I know the local suppliers, the region's older housing stock, and what these homes actually need."
     },
     {
       icon: CheckCircle2,

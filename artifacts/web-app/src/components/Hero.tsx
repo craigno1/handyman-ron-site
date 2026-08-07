@@ -34,7 +34,7 @@ export function Hero() {
           >
             <div className="inline-flex items-center rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary mb-6" data-testid="text-hero-badge">
               <span className="flex h-2 w-2 rounded-full bg-primary mr-2 animate-pulse"></span>
-              Available for new projects in Gippsland
+              Available for new projects in Mount Alexander Shire
             </div>
             
             <h1 className="text-5xl md:text-7xl font-serif font-black text-foreground leading-[1.1] tracking-tight mb-6" data-testid="text-hero-title">
@@ -44,7 +44,7 @@ export function Hero() {
             </h1>
             
             <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl leading-relaxed" data-testid="text-hero-subtitle">
-              Professional carpentry, renovations, and property maintenance across Tardale, Morwell, and Traralgon. I don't cut corners, and I answer my phone.
+              Professional carpentry, renovations, and quality building work across Taradale, Castlemaine, Kyneton, and the wider Mount Alexander Shire and Macedon Ranges. I don't cut corners, and I answer my phone.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4">
