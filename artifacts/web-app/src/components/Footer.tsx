@@ -16,8 +16,8 @@ export function Footer() {
           </div>
           
           <div className="text-center md:text-right">
-            <a href="tel:0412345678" className="block text-2xl font-serif font-bold text-foreground hover:text-primary transition-colors mb-2">
-              0412 345 678
+            <a href="tel:0407897092" className="block text-2xl font-serif font-bold text-foreground hover:text-primary transition-colors mb-2">
+              0407 897 092
             </a>
             <p className="text-muted-foreground text-sm font-medium">
               Quality tradesmanship. Local reliability.

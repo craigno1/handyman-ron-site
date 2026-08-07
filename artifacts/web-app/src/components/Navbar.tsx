@@ -97,10 +97,10 @@ export function Navbar() {
               </>
             )}
 
-            <a href="tel:0412345678" className="group" data-testid="link-nav-call">
+            <a href="tel:0407897092" className="group" data-testid="link-nav-call">
               <Button variant="default" className="gap-2 shadow-md">
                 <Phone className="w-5 h-5 group-hover:animate-pulse" />
-                0412 345 678
+                0407 897 092
               </Button>
             </a>
           </div>
@@ -166,10 +166,10 @@ export function Navbar() {
               Contact
             </a>
             <div className="pt-4">
-              <a href="tel:0412345678" onClick={() => setIsOpen(false)} data-testid="link-mobile-call">
+              <a href="tel:0407897092" onClick={() => setIsOpen(false)} data-testid="link-mobile-call">
                 <Button className="w-full h-14 text-lg gap-2">
                   <Phone className="w-5 h-5" />
-                  0412 345 678
+                  0407 897 092
                 </Button>
               </a>
             </div>

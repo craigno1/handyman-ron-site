@@ -116,10 +116,10 @@ export default function TinyHousePage() {
                   <p className="text-muted-foreground mb-6 leading-relaxed">
                     Tiny homes are a big conversation. Call Ron to talk through your ideas — no pressure, just an experienced builder's honest take on what's possible.
                   </p>
-                  <a href="tel:0412345678" data-testid="link-sidebar-call">
+                  <a href="tel:0407897092" data-testid="link-sidebar-call">
                     <Button size="lg" className="w-full gap-2 mb-4 text-lg h-14">
                       <Phone className="w-5 h-5" />
-                      0412 345 678
+                      0407 897 092
                     </Button>
                   </a>
                   <Link href="/#contact">

@@ -113,8 +113,8 @@ export function Services() {
             <p className="text-primary-foreground/90 mb-8 text-lg font-medium">
               If it involves timber, plaster, or tools, I probably do it. Give me a ring and let's chat.
             </p>
-            <a href="tel:0412345678" className="inline-flex items-center font-bold text-lg hover:underline underline-offset-4 decoration-2" data-testid="link-services-cta-call">
-              Call 0412 345 678 <span className="ml-2">→</span>
+            <a href="tel:0407897092" className="inline-flex items-center font-bold text-lg hover:underline underline-offset-4 decoration-2" data-testid="link-services-cta-call">
+              Call 0407 897 092 <span className="ml-2">→</span>
             </a>
           </motion.div>
         </motion.div>

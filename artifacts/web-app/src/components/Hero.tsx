@@ -48,10 +48,10 @@ export function Hero() {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4">
-              <a href="tel:0412345678" data-testid="link-hero-call">
+              <a href="tel:0407897092" data-testid="link-hero-call">
                 <Button size="lg" className="w-full sm:w-auto gap-2 group text-lg">
                   <Phone className="w-5 h-5 group-hover:rotate-12 transition-transform" />
-                  0412 345 678
+                  0407 897 092
                 </Button>
               </a>
               <a href="#contact" data-testid="link-hero-quote">

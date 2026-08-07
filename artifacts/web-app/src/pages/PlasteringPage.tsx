@@ -116,10 +116,10 @@ export default function PlasteringPage() {
                   <p className="text-muted-foreground mb-6 leading-relaxed">
                     Send through a photo of the damage or the space, or give Ron a call to describe what you need.
                   </p>
-                  <a href="tel:0412345678" data-testid="link-sidebar-call">
+                  <a href="tel:0407897092" data-testid="link-sidebar-call">
                     <Button size="lg" className="w-full gap-2 mb-4 text-lg h-14">
                       <Phone className="w-5 h-5" />
-                      0412 345 678
+                      0407 897 092
                     </Button>
                   </a>
                   <Link href="/#contact">

@@ -68,8 +68,8 @@ export function Contact() {
                 </div>
                 <div>
                   <h3 className="text-sm font-bold text-muted-foreground uppercase tracking-wider mb-1">Direct Line</h3>
-                  <a href="tel:0412345678" className="text-3xl font-serif font-bold text-foreground hover:text-primary transition-colors">
-                    0412 345 678
+                  <a href="tel:0407897092" className="text-3xl font-serif font-bold text-foreground hover:text-primary transition-colors">
+                    0407 897 092
                   </a>
                 </div>
               </div>
