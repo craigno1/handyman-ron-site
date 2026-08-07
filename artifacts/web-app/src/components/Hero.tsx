@@ -34,7 +34,7 @@ export function Hero() {
           >
             <div className="inline-flex items-center rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary mb-6" data-testid="text-hero-badge">
               <span className="flex h-2 w-2 rounded-full bg-primary mr-2 animate-pulse"></span>
-              Available for new projects in Mount Alexander Shire
+              Available for projects near Mount Alexander Shire
             </div>
             
             <h1 className="text-5xl md:text-7xl font-serif font-black text-foreground leading-[1.1] tracking-tight mb-6" data-testid="text-hero-title">
