@@ -1,0 +1,21 @@
+{
+  "hero": {
+    "badge": "Available for projects near Mount Alexander Shire",
+    "title_line1": "Built right.",
+    "title_line2": "Fixed properly.",
+    "title_line3": "Done on time.",
+    "subtitle": "Professional carpentry, renovations, and quality building work across Taradale, Castlemaine, Kyneton, and the wider Mount Alexander Shire and Macedon Ranges. I don't cut corners, and I answer my phone.",
+    "cta_quote_label": "Get a Free Quote"
+  },
+  "services_section": {
+    "heading": "The work I do.",
+    "cta_heading": "Need something else?",
+    "cta_text": "If it involves timber, plaster, or tools, I probably do it. Give me a ring and let's chat."
+  },
+  "contact_section": {
+    "heading": "Get in touch.",
+    "description": "Ready to start your project or need something fixed? Fill out the form or give me a direct call. I aim to respond to all inquiries within 24 hours.",
+    "service_area_label": "Service Area",
+    "service_area": "Taradale, Castlemaine, Kyneton, Malmsbury, Woodend, and the wider Mount Alexander Shire and Macedon Ranges."
+  }
+}

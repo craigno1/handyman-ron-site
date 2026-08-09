@@ -1,0 +1,223 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "artifacts/web-app/public/images"
+public_folder: "/images"
+
+collections:
+  - name: "settings"
+    label: "⚙️ Site Settings"
+    files:
+      - name: "global"
+        label: "Global (Phone, Location, Tagline)"
+        file: "artifacts/web-app/src/content/global.json"
+        format: json
+        fields:
+          - { name: site_name, label: "Site Name", widget: string }
+          - { name: phone_display, label: "Phone Number (display, e.g. 0407 897 092)", widget: string }
+          - { name: phone_raw, label: "Phone Number (digits only, e.g. 0407897092)", widget: string }
+          - { name: location, label: "Location (shown in footer)", widget: string }
+          - { name: tagline, label: "Footer Tagline", widget: string }
+          - { name: footer_license, label: "Footer License Text", widget: string }
+
+  - name: "pages"
+    label: "📄 Pages"
+    files:
+
+      - name: "home"
+        label: "Home Page"
+        file: "artifacts/web-app/src/content/home.json"
+        format: json
+        fields:
+          - name: hero
+            label: "Hero Section"
+            widget: object
+            fields:
+              - { name: badge, label: "Badge text (availability)", widget: string }
+              - { name: title_line1, label: "Headline — Line 1 (normal)", widget: string }
+              - { name: title_line2, label: "Headline — Line 2 (muted)", widget: string }
+              - { name: title_line3, label: "Headline — Line 3 (highlighted)", widget: string }
+              - { name: subtitle, label: "Subtitle / description paragraph", widget: text }
+              - { name: cta_quote_label, label: "Quote button label", widget: string }
+          - name: services_section
+            label: "Services Section"
+            widget: object
+            fields:
+              - { name: heading, label: "Section heading", widget: string }
+              - { name: cta_heading, label: "CTA card heading", widget: string }
+              - { name: cta_text, label: "CTA card text", widget: text }
+          - name: contact_section
+            label: "Contact Section"
+            widget: object
+            fields:
+              - { name: heading, label: "Section heading", widget: string }
+              - { name: description, label: "Description paragraph", widget: text }
+              - { name: service_area_label, label: "Service area label", widget: string }
+              - { name: service_area, label: "Service area text", widget: text }
+
+      - name: "why_choose_us"
+        label: "Why Choose Us Section"
+        file: "artifacts/web-app/src/content/why-choose-us.json"
+        format: json
+        fields:
+          - { name: heading, label: "Section heading", widget: string }
+          - { name: quote, label: "Ron's quote", widget: text }
+          - { name: quote_author, label: "Quote author name", widget: string }
+          - { name: quote_author_title, label: "Quote author title/role", widget: string }
+          - name: reasons
+            label: "Reasons (the 4 cards)"
+            widget: list
+            fields:
+              - name: icon
+                label: "Icon"
+                widget: select
+                options: [Clock, MapPin, CheckCircle2, BadgeDollarSign, Hammer, Brush, Home, Ruler, House, Star, Shield, ThumbsUp]
+              - { name: title, label: "Card title", widget: string }
+              - { name: description, label: "Card description", widget: text }
+
+      - name: "services"
+        label: "Services List"
+        file: "artifacts/web-app/src/content/services.json"
+        format: json
+        fields:
+          - name: services
+            label: "Services"
+            widget: list
+            fields:
+              - { name: title, label: "Service name", widget: string }
+              - { name: slug, label: "URL slug (no spaces, use hyphens)", widget: string }
+              - name: icon
+                label: "Icon"
+                widget: select
+                options: [Hammer, Brush, Home, Ruler, House, Wrench, Paintbrush, Building, HardHat]
+              - { name: description, label: "Short description (shown on card)", widget: text }
+
+      - name: "carpentry"
+        label: "Carpentry Page"
+        file: "artifacts/web-app/src/content/carpentry.json"
+        format: json
+        fields:
+          - { name: meta_title, label: "Page title (SEO)", widget: string }
+          - { name: meta_description, label: "Meta description (SEO)", widget: text }
+          - { name: hero_subtitle, label: "Hero subtitle", widget: text }
+          - { name: intro_heading, label: "Intro heading", widget: string }
+          - { name: intro_para1, label: "Intro paragraph 1", widget: text }
+          - { name: intro_para2, label: "Intro paragraph 2", widget: text }
+          - { name: intro_para3, label: "Intro paragraph 3", widget: text }
+          - { name: highlights_heading, label: "Highlights section heading", widget: string }
+          - name: highlights
+            label: "Highlights list"
+            widget: list
+            field: { name: item, label: "Item", widget: string }
+          - { name: heritage_heading, label: "Heritage section heading", widget: string }
+          - { name: heritage_para1, label: "Heritage paragraph 1", widget: text }
+          - { name: heritage_para2, label: "Heritage paragraph 2", widget: text }
+          - { name: area_heading, label: "Service area heading", widget: string }
+          - { name: area_para1, label: "Service area paragraph", widget: text }
+          - { name: sidebar_heading, label: "Sidebar heading", widget: string }
+          - { name: sidebar_description, label: "Sidebar description", widget: text }
+
+      - name: "plastering"
+        label: "Plastering Page"
+        file: "artifacts/web-app/src/content/plastering.json"
+        format: json
+        fields:
+          - { name: meta_title, label: "Page title (SEO)", widget: string }
+          - { name: meta_description, label: "Meta description (SEO)", widget: text }
+          - { name: hero_subtitle, label: "Hero subtitle", widget: text }
+          - { name: intro_heading, label: "Intro heading", widget: string }
+          - { name: intro_para1, label: "Intro paragraph 1", widget: text }
+          - { name: intro_para2, label: "Intro paragraph 2", widget: text }
+          - { name: intro_para3, label: "Intro paragraph 3", widget: text }
+          - { name: highlights_heading, label: "Highlights section heading", widget: string }
+          - name: highlights
+            label: "Highlights list"
+            widget: list
+            field: { name: item, label: "Item", widget: string }
+          - { name: heritage_heading, label: "Heritage section heading", widget: string }
+          - { name: heritage_para1, label: "Heritage paragraph 1", widget: text }
+          - { name: heritage_para2, label: "Heritage paragraph 2", widget: text }
+          - { name: water_heading, label: "Water damage section heading", widget: string }
+          - { name: water_para1, label: "Water damage paragraph 1", widget: text }
+          - { name: water_para2, label: "Water damage paragraph 2 / service area", widget: text }
+          - { name: sidebar_heading, label: "Sidebar heading", widget: string }
+          - { name: sidebar_description, label: "Sidebar description", widget: text }
+
+      - name: "renovations"
+        label: "Renovations Page"
+        file: "artifacts/web-app/src/content/renovations.json"
+        format: json
+        fields:
+          - { name: meta_title, label: "Page title (SEO)", widget: string }
+          - { name: meta_description, label: "Meta description (SEO)", widget: text }
+          - { name: hero_subtitle, label: "Hero subtitle", widget: text }
+          - { name: intro_heading, label: "Intro heading", widget: string }
+          - { name: intro_para1, label: "Intro paragraph 1", widget: text }
+          - { name: intro_para2, label: "Intro paragraph 2", widget: text }
+          - { name: intro_para3, label: "Intro paragraph 3", widget: text }
+          - { name: highlights_heading, label: "Highlights section heading", widget: string }
+          - name: highlights
+            label: "Highlights list"
+            widget: list
+            field: { name: item, label: "Item", widget: string }
+          - { name: kitchens_heading, label: "Kitchens & bathrooms heading", widget: string }
+          - { name: kitchens_para1, label: "Kitchens paragraph 1", widget: text }
+          - { name: kitchens_para2, label: "Kitchens paragraph 2", widget: text }
+          - { name: period_heading, label: "Period homes heading", widget: string }
+          - { name: period_para1, label: "Period homes paragraph 1", widget: text }
+          - { name: period_para2, label: "Period homes paragraph 2", widget: text }
+          - { name: sidebar_heading, label: "Sidebar heading", widget: string }
+          - { name: sidebar_description, label: "Sidebar description", widget: text }
+
+      - name: "extensions"
+        label: "Extensions Page"
+        file: "artifacts/web-app/src/content/extensions.json"
+        format: json
+        fields:
+          - { name: meta_title, label: "Page title (SEO)", widget: string }
+          - { name: meta_description, label: "Meta description (SEO)", widget: text }
+          - { name: hero_subtitle, label: "Hero subtitle", widget: text }
+          - { name: intro_heading, label: "Intro heading", widget: string }
+          - { name: intro_para1, label: "Intro paragraph 1", widget: text }
+          - { name: intro_para2, label: "Intro paragraph 2", widget: text }
+          - { name: intro_para3, label: "Intro paragraph 3", widget: text }
+          - { name: highlights_heading, label: "Highlights section heading", widget: string }
+          - name: highlights
+            label: "Highlights list"
+            widget: list
+            field: { name: item, label: "Item", widget: string }
+          - { name: council_heading, label: "Council section heading", widget: string }
+          - { name: council_para1, label: "Council paragraph 1", widget: text }
+          - { name: council_para2, label: "Council paragraph 2", widget: text }
+          - { name: garage_heading, label: "Garage conversion heading", widget: string }
+          - { name: garage_para1, label: "Garage paragraph 1", widget: text }
+          - { name: garage_para2, label: "Garage paragraph 2", widget: text }
+          - { name: sidebar_heading, label: "Sidebar heading", widget: string }
+          - { name: sidebar_description, label: "Sidebar description", widget: text }
+
+      - name: "tiny_house"
+        label: "Tiny House Page"
+        file: "artifacts/web-app/src/content/tiny-house.json"
+        format: json
+        fields:
+          - { name: meta_title, label: "Page title (SEO)", widget: string }
+          - { name: meta_description, label: "Meta description (SEO)", widget: text }
+          - { name: hero_subtitle, label: "Hero subtitle", widget: text }
+          - { name: intro_heading, label: "Intro heading", widget: string }
+          - { name: intro_para1, label: "Intro paragraph 1", widget: text }
+          - { name: intro_para2, label: "Intro paragraph 2", widget: text }
+          - { name: intro_para3, label: "Intro paragraph 3", widget: text }
+          - { name: highlights_heading, label: "Highlights section heading", widget: string }
+          - name: highlights
+            label: "Highlights list"
+            widget: list
+            field: { name: item, label: "Item", widget: string }
+          - { name: thow_heading, label: "THOW vs slab heading", widget: string }
+          - { name: thow_para1, label: "THOW paragraph 1", widget: text }
+          - { name: thow_para2, label: "THOW paragraph 2", widget: text }
+          - { name: thow_para3, label: "THOW paragraph 3", widget: text }
+          - { name: offgrid_heading, label: "Off-grid heading", widget: string }
+          - { name: offgrid_para1, label: "Off-grid paragraph", widget: text }
+          - { name: sidebar_heading, label: "Sidebar heading", widget: string }
+          - { name: sidebar_description, label: "Sidebar description", widget: text }

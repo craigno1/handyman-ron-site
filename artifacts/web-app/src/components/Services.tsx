@@ -1,39 +1,19 @@
 import { motion } from "framer-motion";
 import { Hammer, Brush, Home, Ruler, House, ArrowRight } from "lucide-react";
 import { Link } from "wouter";
+import type { LucideProps } from "lucide-react";
+import servicesContent from "../content/services.json";
+import homeContent from "../content/home.json";
+import globalContent from "../content/global.json";
 
-const services = [
-  {
-    title: "Carpentry",
-    slug: "carpentry",
-    icon: Hammer,
-    description: "Framing, decking, custom joinery, cabinetry, and structural timber work. Built to Australian standards with timber that lasts — including heritage-sympathetic work on period homes.",
-  },
-  {
-    title: "Plastering",
-    slug: "plastering",
-    icon: Brush,
-    description: "Flawless patching, full room sets, detailed cornice work, and render prep. Smooth finishes ready for paint, with proper heritage fibrous plaster restoration when required.",
-  },
-  {
-    title: "Renovations",
-    slug: "renovations",
-    icon: Home,
-    description: "Kitchens, bathrooms, and living areas. From full gut-and-rebuilds to targeted updates — including sensitive period home renovation across Taradale and the Mount Alexander Shire.",
-  },
-  {
-    title: "Extensions",
-    slug: "extensions",
-    icon: Ruler,
-    description: "Single and double-storey additions, garage conversions, and granny flats. Fully council-compliant builds matched to your existing home — heritage and modern alike.",
-  },
-  {
-    title: "Tiny House Building",
-    slug: "tiny-house-building",
-    icon: House,
-    description: "Custom-built tiny homes on wheels or slab — off-grid capable, properly insulated for central Victoria winters, and fully finished to a residential standard.",
-  },
-];
+type IconName = "Hammer" | "Brush" | "Home" | "Ruler" | "House";
+const iconMap: Record<IconName, React.ComponentType<LucideProps>> = {
+  Hammer,
+  Brush,
+  Home,
+  Ruler,
+  House,
+};
 
 const containerVariants = {
   hidden: {},
@@ -54,12 +34,15 @@ const cardVariants = {
 };
 
 export function Services() {
+  const { services_section } = homeContent;
+  const { phone_display, phone_raw } = globalContent;
+
   return (
     <section id="services" className="py-24 bg-card relative z-10 border-t border-border/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-16 md:mb-24">
           <h2 className="text-3xl md:text-5xl font-serif font-bold text-foreground mb-6" data-testid="text-services-title">
-            The work I do.
+            {services_section.heading}
           </h2>
           <div className="h-1 w-24 bg-primary rounded-full" />
         </div>
@@ -71,50 +54,52 @@ export function Services() {
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
         >
-          {services.map((service, index) => (
-            <motion.div
-              key={service.title}
-              variants={cardVariants}
-              className="group bg-background border border-border p-8 rounded-xl hover:border-primary/50 transition-colors duration-300 relative overflow-hidden flex flex-col"
-              data-testid={`card-service-${index}`}
-            >
-              {/* Subtle hover background accent */}
-              <div className="absolute top-0 right-0 p-12 bg-primary/5 rounded-bl-[100%] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-
-              <div className="bg-secondary w-14 h-14 rounded-lg flex items-center justify-center mb-6 text-primary group-hover:scale-110 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 flex-shrink-0">
-                <service.icon className="w-7 h-7" />
-              </div>
-
-              <h3 className="text-2xl font-serif font-semibold text-foreground mb-4">
-                {service.title}
-              </h3>
-
-              <p className="text-muted-foreground leading-relaxed text-lg flex-grow">
-                {service.description}
-              </p>
-
-              <Link
-                href={`/${service.slug}`}
-                className="inline-flex items-center gap-2 mt-6 text-primary font-semibold text-sm hover:underline underline-offset-4 group/link"
-                data-testid={`link-service-${service.slug}`}
+          {servicesContent.services.map((service, index) => {
+            const Icon = iconMap[service.icon as IconName] ?? Hammer;
+            return (
+              <motion.div
+                key={service.title}
+                variants={cardVariants}
+                className="group bg-background border border-border p-8 rounded-xl hover:border-primary/50 transition-colors duration-300 relative overflow-hidden flex flex-col"
+                data-testid={`card-service-${index}`}
               >
-                Learn more
-                <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
-              </Link>
-            </motion.div>
-          ))}
+                <div className="absolute top-0 right-0 p-12 bg-primary/5 rounded-bl-[100%] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-          {/* Call to action card filling the 6th slot on large screens */}
+                <div className="bg-secondary w-14 h-14 rounded-lg flex items-center justify-center mb-6 text-primary group-hover:scale-110 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 flex-shrink-0">
+                  <Icon className="w-7 h-7" />
+                </div>
+
+                <h3 className="text-2xl font-serif font-semibold text-foreground mb-4">
+                  {service.title}
+                </h3>
+
+                <p className="text-muted-foreground leading-relaxed text-lg flex-grow">
+                  {service.description}
+                </p>
+
+                <Link
+                  href={`/${service.slug}`}
+                  className="inline-flex items-center gap-2 mt-6 text-primary font-semibold text-sm hover:underline underline-offset-4 group/link"
+                  data-testid={`link-service-${service.slug}`}
+                >
+                  Learn more
+                  <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
+                </Link>
+              </motion.div>
+            );
+          })}
+
+          {/* CTA card */}
           <motion.div
             variants={cardVariants}
             className="group bg-primary text-primary-foreground p-8 rounded-xl flex flex-col justify-center items-start lg:col-span-1 md:col-span-2 lg:min-h-[300px]"
           >
-            <h3 className="text-2xl font-serif font-bold mb-4">Need something else?</h3>
+            <h3 className="text-2xl font-serif font-bold mb-4">{services_section.cta_heading}</h3>
             <p className="text-primary-foreground/90 mb-8 text-lg font-medium">
-              If it involves timber, plaster, or tools, I probably do it. Give me a ring and let's chat.
+              {services_section.cta_text}
             </p>
-            <a href="tel:0407897092" className="inline-flex items-center font-bold text-lg hover:underline underline-offset-4 decoration-2" data-testid="link-services-cta-call">
-              Call 0407 897 092 <span className="ml-2">→</span>
+            <a href={`tel:${phone_raw}`} className="inline-flex items-center font-bold text-lg hover:underline underline-offset-4 decoration-2" data-testid="link-services-cta-call">
+              Call {phone_display} <span className="ml-2">→</span>
             </a>
           </motion.div>
         </motion.div>

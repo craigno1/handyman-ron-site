@@ -1,0 +1,34 @@
+{
+  "services": [
+    {
+      "title": "Carpentry",
+      "slug": "carpentry",
+      "icon": "Hammer",
+      "description": "Framing, decking, custom joinery, cabinetry, and structural timber work. Built to Australian standards with timber that lasts — including heritage-sympathetic work on period homes."
+    },
+    {
+      "title": "Plastering",
+      "slug": "plastering",
+      "icon": "Brush",
+      "description": "Flawless patching, full room sets, detailed cornice work, and render prep. Smooth finishes ready for paint, with proper heritage fibrous plaster restoration when required."
+    },
+    {
+      "title": "Renovations",
+      "slug": "renovations",
+      "icon": "Home",
+      "description": "Kitchens, bathrooms, and living areas. From full gut-and-rebuilds to targeted updates — including sensitive period home renovation across Taradale and the Mount Alexander Shire."
+    },
+    {
+      "title": "Extensions",
+      "slug": "extensions",
+      "icon": "Ruler",
+      "description": "Single and double-storey additions, garage conversions, and granny flats. Fully council-compliant builds matched to your existing home — heritage and modern alike."
+    },
+    {
+      "title": "Tiny House Building",
+      "slug": "tiny-house-building",
+      "icon": "House",
+      "description": "Custom-built tiny homes on wheels or slab — off-grid capable, properly insulated for central Victoria winters, and fully finished to a residential standard."
+    }
+  ]
+}

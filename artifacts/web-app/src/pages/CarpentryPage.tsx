@@ -5,31 +5,21 @@ import { Hammer, CheckCircle2, Phone, ArrowLeft } from "lucide-react";
 import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import { Button } from "../components/ui/button";
-
-const highlights = [
-  "Structural timber framing for new builds and extensions",
-  "Hardwood and treated pine decking — built to last central Victoria's seasons",
-  "Custom joinery: built-in cabinetry, wardrobes, bookshelves, and storage solutions",
-  "Pergolas, carports, and outdoor structures",
-  "Fascia, eaves, and weatherboard replacement and repair",
-  "Internal fit-out: skirting, architraves, door hanging, and stair work",
-  "Heritage-sympathetic repairs on period homes common in the region",
-  "Sub-floor framing, bearers and joists, and floor levelling",
-];
+import content from "../content/carpentry.json";
+import globalContent from "../content/global.json";
 
 export default function CarpentryPage() {
+  const { phone_display, phone_raw } = globalContent;
+
   useEffect(() => {
-    document.title = "Carpentry Services | Handyman Ron — Taradale & Mount Alexander Shire";
+    document.title = content.meta_title;
     let meta = document.querySelector('meta[name="description"]');
     if (!meta) {
       meta = document.createElement("meta");
       meta.setAttribute("name", "description");
       document.head.appendChild(meta);
     }
-    meta.setAttribute(
-      "content",
-      "Expert carpentry in Taradale, Castlemaine, Kyneton and the Mount Alexander Shire. Structural framing, custom joinery, decking, and heritage repairs. 40+ years experience. Call Handyman Ron."
-    );
+    meta.setAttribute("content", content.meta_description);
   }, []);
 
   return (
@@ -58,7 +48,7 @@ export default function CarpentryPage() {
                 </div>
               </div>
               <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl leading-relaxed">
-                Structural and finish carpentry across Taradale, Castlemaine, Kyneton, and the Mount Alexander Shire — built properly, by someone who's been doing it for over four decades.
+                {content.hero_subtitle}
               </p>
             </motion.div>
           </div>
@@ -72,20 +62,14 @@ export default function CarpentryPage() {
               {/* Article */}
               <article className="lg:col-span-2 prose-lg" data-testid="text-service-content">
                 <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
-                  <h2 className="text-3xl font-serif font-bold text-foreground mb-6">Carpentry you can count on</h2>
-                  <p className="text-muted-foreground text-lg leading-relaxed mb-6">
-                    With more than 40 years of hands-on experience, Ron has worked on everything from the structural bones of new homes to the fine details of custom joinery. In that time, he's developed a respect for timber that only comes from working with it every day — understanding how different species behave across seasons, which joints hold under load, and how to frame a roof that'll still be solid in 30 years.
-                  </p>
-                  <p className="text-muted-foreground text-lg leading-relaxed mb-6">
-                    Central Victoria's housing stock tells a story. The older homes around Castlemaine, Chewton, and Taradale were built in an era when tradespeople took genuine pride in their craft. Ron works in that tradition — measuring twice, cutting once, and never taking shortcuts that look fine on the day but cause headaches down the track.
-                  </p>
-                  <p className="text-muted-foreground text-lg leading-relaxed mb-10">
-                    Whether you need a deck that can handle Australian summers, a set of built-in wardrobes that fit your space properly, or structural framing for an addition, Ron brings the same care and attention to every job. He works alone, which means the standard doesn't vary depending on which apprentice turned up that morning.
-                  </p>
+                  <h2 className="text-3xl font-serif font-bold text-foreground mb-6">{content.intro_heading}</h2>
+                  <p className="text-muted-foreground text-lg leading-relaxed mb-6">{content.intro_para1}</p>
+                  <p className="text-muted-foreground text-lg leading-relaxed mb-6">{content.intro_para2}</p>
+                  <p className="text-muted-foreground text-lg leading-relaxed mb-10">{content.intro_para3}</p>
 
-                  <h2 className="text-3xl font-serif font-bold text-foreground mb-6">Carpentry services in Mount Alexander Shire</h2>
+                  <h2 className="text-3xl font-serif font-bold text-foreground mb-6">{content.highlights_heading}</h2>
                   <ul className="space-y-3 mb-10">
-                    {highlights.map((item, i) => (
+                    {content.highlights.map((item, i) => (
                       <li key={i} className="flex items-start gap-3">
                         <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
                         <span className="text-muted-foreground text-lg">{item}</span>
@@ -93,32 +77,24 @@ export default function CarpentryPage() {
                     ))}
                   </ul>
 
-                  <h2 className="text-3xl font-serif font-bold text-foreground mb-6">Heritage homes and period properties</h2>
-                  <p className="text-muted-foreground text-lg leading-relaxed mb-6">
-                    The Mount Alexander Shire and Macedon Ranges are home to a remarkable number of Victorian-era and Federation homes. These properties need a carpenter who understands period construction — the way those walls were framed, how the floors were laid, and why you can't just substitute modern materials without thinking about compatibility and aesthetics.
-                  </p>
-                  <p className="text-muted-foreground text-lg leading-relaxed mb-6">
-                    Ron has spent decades working on older homes in this region. He can match heritage profiles, source appropriate timber species, and repair or replicate elements that give these homes their character — without making it look like a renovation that happened in the wrong decade.
-                  </p>
+                  <h2 className="text-3xl font-serif font-bold text-foreground mb-6">{content.heritage_heading}</h2>
+                  <p className="text-muted-foreground text-lg leading-relaxed mb-6">{content.heritage_para1}</p>
+                  <p className="text-muted-foreground text-lg leading-relaxed mb-6">{content.heritage_para2}</p>
 
-                  <h2 className="text-3xl font-serif font-bold text-foreground mb-6">Serving Taradale and surrounding areas</h2>
-                  <p className="text-muted-foreground text-lg leading-relaxed">
-                    Ron takes on carpentry work across Taradale, Castlemaine, Kyneton, Malmsbury, Chewton, Harcourt, Woodend, and the broader Mount Alexander Shire and Macedon Ranges. If you're not sure whether he covers your area, just give him a call — he'd rather have that conversation than have you wonder.
-                  </p>
+                  <h2 className="text-3xl font-serif font-bold text-foreground mb-6">{content.area_heading}</h2>
+                  <p className="text-muted-foreground text-lg leading-relaxed">{content.area_para1}</p>
                 </motion.div>
               </article>
 
               {/* Sidebar CTA */}
               <aside className="lg:col-span-1">
                 <div className="sticky top-28 bg-card border border-border rounded-2xl p-8 shadow-lg" data-testid="sidebar-cta">
-                  <h3 className="text-2xl font-serif font-bold text-foreground mb-3">Get a free quote</h3>
-                  <p className="text-muted-foreground mb-6 leading-relaxed">
-                    Describe the job and Ron will come out to take a look. No commitment, no sales pitch — just a straight conversation about what it'll take.
-                  </p>
-                  <a href="tel:0407897092" data-testid="link-sidebar-call">
+                  <h3 className="text-2xl font-serif font-bold text-foreground mb-3">{content.sidebar_heading}</h3>
+                  <p className="text-muted-foreground mb-6 leading-relaxed">{content.sidebar_description}</p>
+                  <a href={`tel:${phone_raw}`} data-testid="link-sidebar-call">
                     <Button size="lg" className="w-full gap-2 mb-4 text-lg h-14">
                       <Phone className="w-5 h-5" />
-                      0407 897 092
+                      {phone_display}
                     </Button>
                   </a>
                   <Link href="/#contact">

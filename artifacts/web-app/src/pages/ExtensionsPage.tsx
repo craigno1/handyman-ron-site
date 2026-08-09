@@ -5,31 +5,21 @@ import { Ruler, CheckCircle2, Phone, ArrowLeft } from "lucide-react";
 import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import { Button } from "../components/ui/button";
-
-const highlights = [
-  "Single-storey room additions matched to your existing home",
-  "Double-storey extensions — structural planning and full build",
-  "Garage and shed conversions into habitable living space",
-  "Rear and side additions for growing families",
-  "Granny flat and secondary dwelling construction",
-  "Verandah and alfresco enclosures converted to insulated rooms",
-  "Council permit coordination and compliance documentation",
-  "Extensions to heritage and period homes handled with care",
-];
+import content from "../content/extensions.json";
+import globalContent from "../content/global.json";
 
 export default function ExtensionsPage() {
+  const { phone_display, phone_raw } = globalContent;
+
   useEffect(() => {
-    document.title = "Home Extensions | Handyman Ron — Taradale & Mount Alexander Shire";
+    document.title = content.meta_title;
     let meta = document.querySelector('meta[name="description"]');
     if (!meta) {
       meta = document.createElement("meta");
       meta.setAttribute("name", "description");
       document.head.appendChild(meta);
     }
-    meta.setAttribute(
-      "content",
-      "Home extensions in Taradale, Castlemaine, Kyneton and the Mount Alexander Shire. Room additions, double-storey, granny flats, garage conversions. 40+ years experience. Call Handyman Ron."
-    );
+    meta.setAttribute("content", content.meta_description);
   }, []);
 
   return (
@@ -58,7 +48,7 @@ export default function ExtensionsPage() {
                 </div>
               </div>
               <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl leading-relaxed">
-                When your home needs more space, an extension done properly is one of the best investments you can make. Serving Taradale and the Mount Alexander Shire and Macedon Ranges.
+                {content.hero_subtitle}
               </p>
             </motion.div>
           </div>
@@ -71,20 +61,14 @@ export default function ExtensionsPage() {
 
               <article className="lg:col-span-2" data-testid="text-service-content">
                 <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
-                  <h2 className="text-3xl font-serif font-bold text-foreground mb-6">More space, done right</h2>
-                  <p className="text-muted-foreground text-lg leading-relaxed mb-6">
-                    An extension is a significant undertaking — structurally, financially, and logistically. It touches your existing home in ways that require a thorough understanding of how buildings work: how loads transfer through a structure, how to join new materials to old ones, how to tie in rooflines, drainage, and services without creating problems that won't show up for years.
-                  </p>
-                  <p className="text-muted-foreground text-lg leading-relaxed mb-6">
-                    With more than 40 years of building experience, Ron has completed extensions on properties ranging from small post-war homes to large Federation-era farmhouses across the Mount Alexander Shire and Macedon Ranges. He understands what these builds involve and how to manage them without the stress that often accompanies major building work.
-                  </p>
-                  <p className="text-muted-foreground text-lg leading-relaxed mb-10">
-                    He's also direct about what a project will cost and how long it will take. If the scope changes once work is underway, he talks about it before spending money, not after.
-                  </p>
+                  <h2 className="text-3xl font-serif font-bold text-foreground mb-6">{content.intro_heading}</h2>
+                  <p className="text-muted-foreground text-lg leading-relaxed mb-6">{content.intro_para1}</p>
+                  <p className="text-muted-foreground text-lg leading-relaxed mb-6">{content.intro_para2}</p>
+                  <p className="text-muted-foreground text-lg leading-relaxed mb-10">{content.intro_para3}</p>
 
-                  <h2 className="text-3xl font-serif font-bold text-foreground mb-6">Extension services in Mount Alexander Shire</h2>
+                  <h2 className="text-3xl font-serif font-bold text-foreground mb-6">{content.highlights_heading}</h2>
                   <ul className="space-y-3 mb-10">
-                    {highlights.map((item, i) => (
+                    {content.highlights.map((item, i) => (
                       <li key={i} className="flex items-start gap-3">
                         <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
                         <span className="text-muted-foreground text-lg">{item}</span>
@@ -92,34 +76,24 @@ export default function ExtensionsPage() {
                     ))}
                   </ul>
 
-                  <h2 className="text-3xl font-serif font-bold text-foreground mb-6">Council requirements in central Victoria</h2>
-                  <p className="text-muted-foreground text-lg leading-relaxed mb-6">
-                    Extensions in the Mount Alexander Shire and Macedon Ranges Shire require building permits, and properties with heritage overlays have additional planning requirements that need to be addressed before construction begins. Ron has worked with these councils for many years and understands what they're looking for in an application.
-                  </p>
-                  <p className="text-muted-foreground text-lg leading-relaxed mb-6">
-                    He can help with permit documentation and connect you with the local building surveyor if needed — or work alongside your own architect or designer if you've already started that process. The goal is to make the approval process as straightforward as possible so the build can get underway without unnecessary delays.
-                  </p>
+                  <h2 className="text-3xl font-serif font-bold text-foreground mb-6">{content.council_heading}</h2>
+                  <p className="text-muted-foreground text-lg leading-relaxed mb-6">{content.council_para1}</p>
+                  <p className="text-muted-foreground text-lg leading-relaxed mb-6">{content.council_para2}</p>
 
-                  <h2 className="text-3xl font-serif font-bold text-foreground mb-6">Garage conversions and secondary dwellings</h2>
-                  <p className="text-muted-foreground text-lg leading-relaxed mb-6">
-                    Converting an existing garage or shed into a habitable room — or building a granny flat or secondary dwelling — is often a practical way to add usable space without the footprint and cost of a full addition. These projects need to meet the same building standards as any other habitable room: adequate insulation, appropriate ceiling heights, and compliant wet area work if a bathroom is included.
-                  </p>
-                  <p className="text-muted-foreground text-lg leading-relaxed">
-                    Ron takes on extension work across Taradale, Castlemaine, Kyneton, Malmsbury, Harcourt, Woodend, and the surrounding region. If you're considering adding to your home, give him a call for a no-obligation conversation about what's involved.
-                  </p>
+                  <h2 className="text-3xl font-serif font-bold text-foreground mb-6">{content.garage_heading}</h2>
+                  <p className="text-muted-foreground text-lg leading-relaxed mb-6">{content.garage_para1}</p>
+                  <p className="text-muted-foreground text-lg leading-relaxed">{content.garage_para2}</p>
                 </motion.div>
               </article>
 
               <aside className="lg:col-span-1">
                 <div className="sticky top-28 bg-card border border-border rounded-2xl p-8 shadow-lg" data-testid="sidebar-cta">
-                  <h3 className="text-2xl font-serif font-bold text-foreground mb-3">Get a free quote</h3>
-                  <p className="text-muted-foreground mb-6 leading-relaxed">
-                    Extensions need a site visit. Call Ron to arrange a time — no cost, no obligation, just an honest conversation about what's involved.
-                  </p>
-                  <a href="tel:0407897092" data-testid="link-sidebar-call">
+                  <h3 className="text-2xl font-serif font-bold text-foreground mb-3">{content.sidebar_heading}</h3>
+                  <p className="text-muted-foreground mb-6 leading-relaxed">{content.sidebar_description}</p>
+                  <a href={`tel:${phone_raw}`} data-testid="link-sidebar-call">
                     <Button size="lg" className="w-full gap-2 mb-4 text-lg h-14">
                       <Phone className="w-5 h-5" />
-                      0407 897 092
+                      {phone_display}
                     </Button>
                   </a>
                   <Link href="/#contact">

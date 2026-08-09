@@ -1,5 +1,12 @@
+import globalContent from "../content/global.json";
+
 export function Footer() {
   const currentYear = new Date().getFullYear();
+  const { site_name, phone_display, phone_raw, location, tagline, footer_license } = globalContent;
+
+  const [name, accent] = site_name.split(/(?=[A-Z][a-z])/).length > 1
+    ? [site_name.replace(/Ron$/, ""), "Ron"]
+    : [site_name.slice(0, -3), site_name.slice(-3)];
 
   return (
     <footer className="bg-background border-t border-border py-12" data-testid="footer">
@@ -8,19 +15,19 @@ export function Footer() {
           
           <div className="text-center md:text-left">
             <div className="font-serif font-bold text-2xl text-foreground mb-2">
-              Handyman<span className="text-primary">Ron</span>
+              {name}<span className="text-primary">{accent}</span>
             </div>
             <p className="text-muted-foreground text-sm font-medium">
-              Taradale, Victoria
+              {location}
             </p>
           </div>
           
           <div className="text-center md:text-right">
-            <a href="tel:0407897092" className="block text-2xl font-serif font-bold text-foreground hover:text-primary transition-colors mb-2">
-              0407 897 092
+            <a href={`tel:${phone_raw}`} className="block text-2xl font-serif font-bold text-foreground hover:text-primary transition-colors mb-2">
+              {phone_display}
             </a>
             <p className="text-muted-foreground text-sm font-medium">
-              Quality tradesmanship. Local reliability.
+              {tagline}
             </p>
           </div>
           
@@ -28,10 +35,10 @@ export function Footer() {
         
         <div className="pt-8 border-t border-border/50 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-muted-foreground/70 text-sm">
-            © {currentYear} Handyman Ron. All rights reserved.
+            © {currentYear} {site_name}. All rights reserved.
           </p>
           <p className="text-muted-foreground/70 text-sm font-medium">
-            Licensed Builder — Victoria
+            {footer_license}
           </p>
         </div>
       </div>

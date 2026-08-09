@@ -5,31 +5,21 @@ import { House, CheckCircle2, Phone, ArrowLeft } from "lucide-react";
 import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import { Button } from "../components/ui/button";
-
-const highlights = [
-  "Tiny homes on wheels (THOW) — fully engineered, road-legal builds",
-  "Slab-based tiny homes and small dwellings on your own land",
-  "Off-grid capable design — solar-ready, water tank, grey water systems",
-  "Full insulation to Victorian climate standards — warm winters, cool summers",
-  "Custom interior fit-out: kitchen, bathroom, sleeping loft, and storage",
-  "Timber frame and structural steel chassis options",
-  "Tradie accommodation and site office conversions",
-  "Quality finishes throughout — this is a home, not a caravan",
-];
+import content from "../content/tiny-house.json";
+import globalContent from "../content/global.json";
 
 export default function TinyHousePage() {
+  const { phone_display, phone_raw } = globalContent;
+
   useEffect(() => {
-    document.title = "Tiny House Building | Handyman Ron — Taradale & Mount Alexander Shire";
+    document.title = content.meta_title;
     let meta = document.querySelector('meta[name="description"]');
     if (!meta) {
       meta = document.createElement("meta");
       meta.setAttribute("name", "description");
       document.head.appendChild(meta);
     }
-    meta.setAttribute(
-      "content",
-      "Custom tiny house building in Taradale, central Victoria. Tiny homes on wheels and slab builds, off-grid capable, fully finished. 40+ years building experience. Call Handyman Ron."
-    );
+    meta.setAttribute("content", content.meta_description);
   }, []);
 
   return (
@@ -58,7 +48,7 @@ export default function TinyHousePage() {
                 </div>
               </div>
               <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl leading-relaxed">
-                Custom tiny homes built with the same care as any full-scale build — because that's exactly what they are. Based in Taradale, building across central Victoria.
+                {content.hero_subtitle}
               </p>
             </motion.div>
           </div>
@@ -71,20 +61,14 @@ export default function TinyHousePage() {
 
               <article className="lg:col-span-2" data-testid="text-service-content">
                 <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
-                  <h2 className="text-3xl font-serif font-bold text-foreground mb-6">Small footprint, serious build quality</h2>
-                  <p className="text-muted-foreground text-lg leading-relaxed mb-6">
-                    A tiny home might be small, but it demands the same level of craft as any other building — arguably more. In a compact space, there's nowhere to hide poor workmanship. Joins need to be tight, insulation needs to be thorough, and every cubic centimetre of storage has to be planned properly. The difference between a tiny home that feels like a genuine dwelling and one that feels like a box with a loft is almost entirely in the quality of the build.
-                  </p>
-                  <p className="text-muted-foreground text-lg leading-relaxed mb-6">
-                    Ron brings more than 40 years of building experience to every tiny home project. He's built enough structures to know which details matter and which are corners people try to cut — and he approaches tiny home construction with the same standards he'd apply to a full residential build, because that's what it is.
-                  </p>
-                  <p className="text-muted-foreground text-lg leading-relaxed mb-10">
-                    The central Victoria climate is worth thinking about. Cold winters around Taradale and the Mount Alexander Shire mean insulation isn't optional — it's the difference between a home that's comfortable year-round and one you're heating at enormous cost. Ron builds to perform in this climate, not to a budget that ignores it.
-                  </p>
+                  <h2 className="text-3xl font-serif font-bold text-foreground mb-6">{content.intro_heading}</h2>
+                  <p className="text-muted-foreground text-lg leading-relaxed mb-6">{content.intro_para1}</p>
+                  <p className="text-muted-foreground text-lg leading-relaxed mb-6">{content.intro_para2}</p>
+                  <p className="text-muted-foreground text-lg leading-relaxed mb-10">{content.intro_para3}</p>
 
-                  <h2 className="text-3xl font-serif font-bold text-foreground mb-6">Tiny home services across central Victoria</h2>
+                  <h2 className="text-3xl font-serif font-bold text-foreground mb-6">{content.highlights_heading}</h2>
                   <ul className="space-y-3 mb-10">
-                    {highlights.map((item, i) => (
+                    {content.highlights.map((item, i) => (
                       <li key={i} className="flex items-start gap-3">
                         <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
                         <span className="text-muted-foreground text-lg">{item}</span>
@@ -92,34 +76,24 @@ export default function TinyHousePage() {
                     ))}
                   </ul>
 
-                  <h2 className="text-3xl font-serif font-bold text-foreground mb-6">Tiny homes on wheels vs. slab builds</h2>
-                  <p className="text-muted-foreground text-lg leading-relaxed mb-6">
-                    The difference between a tiny home on wheels (THOW) and a slab-based build comes down to planning requirements and permanence. A THOW in Victoria is classified as a vehicle rather than a dwelling, which means different (and often simpler) regulatory requirements — but it also means engineering the structure and chassis to be genuinely road-legal and safe to move.
-                  </p>
-                  <p className="text-muted-foreground text-lg leading-relaxed mb-6">
-                    A slab-based tiny home or small dwelling on your own property is a permanent structure and needs to comply with the National Construction Code and local planning requirements. In the Mount Alexander and Macedon Ranges Shires, this includes discussions with council about minimum lot sizes, setbacks, and whether the dwelling is to be connected to services or run off-grid.
-                  </p>
-                  <p className="text-muted-foreground text-lg leading-relaxed mb-6">
-                    Ron can build both. He'll be straight with you about what each option involves, what the regulatory process looks like, and which one makes sense for your situation and block.
-                  </p>
+                  <h2 className="text-3xl font-serif font-bold text-foreground mb-6">{content.thow_heading}</h2>
+                  <p className="text-muted-foreground text-lg leading-relaxed mb-6">{content.thow_para1}</p>
+                  <p className="text-muted-foreground text-lg leading-relaxed mb-6">{content.thow_para2}</p>
+                  <p className="text-muted-foreground text-lg leading-relaxed mb-6">{content.thow_para3}</p>
 
-                  <h2 className="text-3xl font-serif font-bold text-foreground mb-6">Off-grid capability in the Mount Alexander region</h2>
-                  <p className="text-muted-foreground text-lg leading-relaxed">
-                    Many people who want a tiny home in central Victoria are interested in some degree of off-grid living — solar power, rainwater collection, composting or treatment systems. The rural properties around Taradale, Chewton, and Harcourt are well-suited to this kind of setup. Ron builds tiny homes that are designed for it: proper conduit runs for solar, appropriate tank connections, grey water systems installed correctly. The plumbing and electrical work is done by licensed tradespeople Ron has worked with for years.
-                  </p>
+                  <h2 className="text-3xl font-serif font-bold text-foreground mb-6">{content.offgrid_heading}</h2>
+                  <p className="text-muted-foreground text-lg leading-relaxed">{content.offgrid_para1}</p>
                 </motion.div>
               </article>
 
               <aside className="lg:col-span-1">
                 <div className="sticky top-28 bg-card border border-border rounded-2xl p-8 shadow-lg" data-testid="sidebar-cta">
-                  <h3 className="text-2xl font-serif font-bold text-foreground mb-3">Talk to Ron</h3>
-                  <p className="text-muted-foreground mb-6 leading-relaxed">
-                    Tiny homes are a big conversation. Call Ron to talk through your ideas — no pressure, just an experienced builder's honest take on what's possible.
-                  </p>
-                  <a href="tel:0407897092" data-testid="link-sidebar-call">
+                  <h3 className="text-2xl font-serif font-bold text-foreground mb-3">{content.sidebar_heading}</h3>
+                  <p className="text-muted-foreground mb-6 leading-relaxed">{content.sidebar_description}</p>
+                  <a href={`tel:${phone_raw}`} data-testid="link-sidebar-call">
                     <Button size="lg" className="w-full gap-2 mb-4 text-lg h-14">
                       <Phone className="w-5 h-5" />
-                      0407 897 092
+                      {phone_display}
                     </Button>
                   </a>
                   <Link href="/#contact">

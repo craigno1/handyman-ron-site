@@ -5,31 +5,21 @@ import { Home, CheckCircle2, Phone, ArrowLeft } from "lucide-react";
 import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import { Button } from "../components/ui/button";
-
-const highlights = [
-  "Kitchen renovations — full gut and rebuild or targeted updates",
-  "Bathroom and ensuite renovations including wet area waterproofing",
-  "Laundry and mudroom fit-outs",
-  "Internal wall removal and open-plan conversions",
-  "Living area and bedroom renovations — new flooring, linings, and fit-out",
-  "Period home restoration — maintaining character while improving liveability",
-  "Investment property upgrades — practical improvements that add value",
-  "Full project coordination across trades, or single-trade carpentry and plastering",
-];
+import content from "../content/renovations.json";
+import globalContent from "../content/global.json";
 
 export default function RenovationsPage() {
+  const { phone_display, phone_raw } = globalContent;
+
   useEffect(() => {
-    document.title = "Home Renovations | Handyman Ron — Taradale & Mount Alexander Shire";
+    document.title = content.meta_title;
     let meta = document.querySelector('meta[name="description"]');
     if (!meta) {
       meta = document.createElement("meta");
       meta.setAttribute("name", "description");
       document.head.appendChild(meta);
     }
-    meta.setAttribute(
-      "content",
-      "Home renovations in Taradale, Castlemaine, Kyneton and the Mount Alexander Shire. Kitchens, bathrooms, living areas, period homes. 40+ years experience. Call Handyman Ron."
-    );
+    meta.setAttribute("content", content.meta_description);
   }, []);
 
   return (
@@ -58,7 +48,7 @@ export default function RenovationsPage() {
                 </div>
               </div>
               <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl leading-relaxed">
-                Home renovations done properly — from kitchen and bathroom upgrades to whole-of-house transformations. Serving Taradale and the Mount Alexander Shire and Macedon Ranges.
+                {content.hero_subtitle}
               </p>
             </motion.div>
           </div>
@@ -71,20 +61,14 @@ export default function RenovationsPage() {
 
               <article className="lg:col-span-2" data-testid="text-service-content">
                 <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
-                  <h2 className="text-3xl font-serif font-bold text-foreground mb-6">Renovations that add up to something</h2>
-                  <p className="text-muted-foreground text-lg leading-relaxed mb-6">
-                    A renovation is one of the bigger financial commitments most homeowners make. Done well, it transforms how you live in your home and adds genuine value. Done badly, it creates problems you're dealing with for years — water getting where it shouldn't, walls that don't sit right, finishes that fail within a few seasons.
-                  </p>
-                  <p className="text-muted-foreground text-lg leading-relaxed mb-6">
-                    Ron has been doing renovations for over 40 years, across every type of home you'll find in central Victoria — from newer brick veneer in Kyneton to original weatherboard workers' cottages in Castlemaine. That experience means he understands what different houses need and what problems to look for before they become expensive surprises mid-project.
-                  </p>
-                  <p className="text-muted-foreground text-lg leading-relaxed mb-10">
-                    He approaches renovation work the same way he approaches everything: with honest conversation upfront, a clear quote, and a commitment to doing the work to a standard he'd be happy with in his own home.
-                  </p>
+                  <h2 className="text-3xl font-serif font-bold text-foreground mb-6">{content.intro_heading}</h2>
+                  <p className="text-muted-foreground text-lg leading-relaxed mb-6">{content.intro_para1}</p>
+                  <p className="text-muted-foreground text-lg leading-relaxed mb-6">{content.intro_para2}</p>
+                  <p className="text-muted-foreground text-lg leading-relaxed mb-10">{content.intro_para3}</p>
 
-                  <h2 className="text-3xl font-serif font-bold text-foreground mb-6">Renovation services across Mount Alexander Shire</h2>
+                  <h2 className="text-3xl font-serif font-bold text-foreground mb-6">{content.highlights_heading}</h2>
                   <ul className="space-y-3 mb-10">
-                    {highlights.map((item, i) => (
+                    {content.highlights.map((item, i) => (
                       <li key={i} className="flex items-start gap-3">
                         <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
                         <span className="text-muted-foreground text-lg">{item}</span>
@@ -92,34 +76,24 @@ export default function RenovationsPage() {
                     ))}
                   </ul>
 
-                  <h2 className="text-3xl font-serif font-bold text-foreground mb-6">Kitchens and bathrooms</h2>
-                  <p className="text-muted-foreground text-lg leading-relaxed mb-6">
-                    Kitchens and bathrooms are where most renovation budgets go — and where the consequences of poor workmanship are most obvious. Water penetration behind shower walls, cabinet work that doesn't line up properly, benchtops that aren't level — these aren't just aesthetic problems, they become structural and hygiene issues.
-                  </p>
-                  <p className="text-muted-foreground text-lg leading-relaxed mb-6">
-                    Ron handles the carpentry and joinery side of kitchen and bathroom renovations, and can coordinate the other trades you'll need — plumbing, electrical, tiling — through his network of trusted local operators. If you want a single point of contact who takes responsibility for the whole job, that's something he can manage.
-                  </p>
+                  <h2 className="text-3xl font-serif font-bold text-foreground mb-6">{content.kitchens_heading}</h2>
+                  <p className="text-muted-foreground text-lg leading-relaxed mb-6">{content.kitchens_para1}</p>
+                  <p className="text-muted-foreground text-lg leading-relaxed mb-6">{content.kitchens_para2}</p>
 
-                  <h2 className="text-3xl font-serif font-bold text-foreground mb-6">Period home renovations in central Victoria</h2>
-                  <p className="text-muted-foreground text-lg leading-relaxed mb-6">
-                    The Mount Alexander Shire is one of Victoria's most significant concentrations of nineteenth and early twentieth century housing. These homes — many of them heritage-listed — require particular care when renovating. The challenge is improving liveability and function without erasing the qualities that make them worth living in.
-                  </p>
-                  <p className="text-muted-foreground text-lg leading-relaxed">
-                    Ron has spent decades working on period properties in this region. He knows how to open up a floor plan without losing the proportions that give an old home its character, how to integrate modern joinery without it looking out of place, and how to navigate the specifics of heritage overlays in the Mount Alexander and Macedon Ranges councils.
-                  </p>
+                  <h2 className="text-3xl font-serif font-bold text-foreground mb-6">{content.period_heading}</h2>
+                  <p className="text-muted-foreground text-lg leading-relaxed mb-6">{content.period_para1}</p>
+                  <p className="text-muted-foreground text-lg leading-relaxed">{content.period_para2}</p>
                 </motion.div>
               </article>
 
               <aside className="lg:col-span-1">
                 <div className="sticky top-28 bg-card border border-border rounded-2xl p-8 shadow-lg" data-testid="sidebar-cta">
-                  <h3 className="text-2xl font-serif font-bold text-foreground mb-3">Get a free quote</h3>
-                  <p className="text-muted-foreground mb-6 leading-relaxed">
-                    Tell Ron what you're planning. He'll come out, take a proper look, and give you an honest quote with no pressure.
-                  </p>
-                  <a href="tel:0407897092" data-testid="link-sidebar-call">
+                  <h3 className="text-2xl font-serif font-bold text-foreground mb-3">{content.sidebar_heading}</h3>
+                  <p className="text-muted-foreground mb-6 leading-relaxed">{content.sidebar_description}</p>
+                  <a href={`tel:${phone_raw}`} data-testid="link-sidebar-call">
                     <Button size="lg" className="w-full gap-2 mb-4 text-lg h-14">
                       <Phone className="w-5 h-5" />
-                      0407 897 092
+                      {phone_display}
                     </Button>
                   </a>
                   <Link href="/#contact">

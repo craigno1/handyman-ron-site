@@ -1,29 +1,18 @@
 import { motion } from "framer-motion";
 import { CheckCircle2, MapPin, Clock, BadgeDollarSign } from "lucide-react";
+import type { LucideProps } from "lucide-react";
+import whyContent from "../content/why-choose-us.json";
+
+type IconName = "Clock" | "MapPin" | "CheckCircle2" | "BadgeDollarSign";
+const iconMap: Record<IconName, React.ComponentType<LucideProps>> = {
+  Clock,
+  MapPin,
+  CheckCircle2,
+  BadgeDollarSign,
+};
 
 export function WhyChooseMe() {
-  const reasons = [
-    {
-      icon: Clock,
-      title: "40+ Years on the Tools",
-      description: "Four decades of hands-on trade work across central Victoria. No guesswork, no learning on your job — just deep experience applied to your project."
-    },
-    {
-      icon: MapPin,
-      title: "Central Victoria Local",
-      description: "Based in Taradale, in the heart of Mount Alexander Shire. I know the local suppliers, the region's older housing stock, and what these homes actually need."
-    },
-    {
-      icon: CheckCircle2,
-      title: "No Subcontractor Roulette",
-      description: "When you hire Ron, you get Ron. I do the work myself so I can guarantee the quality."
-    },
-    {
-      icon: BadgeDollarSign,
-      title: "Straight-Up Pricing",
-      description: "Detailed quotes with no hidden extras. If we hit a snag, we talk about it before I spend your money."
-    }
-  ];
+  const { heading, quote, quote_author, quote_author_title, reasons } = whyContent;
 
   return (
     <section id="why-ron" className="py-24 bg-background relative border-t border-border">
@@ -38,25 +27,24 @@ export function WhyChooseMe() {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-3xl md:text-5xl font-serif font-bold text-foreground mb-6" data-testid="text-why-title">
-              Why locals keep coming back to Ron.
+              {heading}
             </h2>
             <div className="h-1 w-24 bg-primary rounded-full mb-10" />
             
             <div className="bg-card border border-border p-8 md:p-10 rounded-2xl relative">
-              {/* Decorative quote mark */}
               <div className="absolute top-6 left-6 text-6xl font-serif text-primary/20 leading-none pointer-events-none">"</div>
               
               <p className="text-xl md:text-2xl text-foreground font-serif leading-relaxed italic relative z-10 mb-6 mt-4">
-                I take on work I'm proud to put my name on. That means I don't rush, I don't cut corners, and I answer my phone.
+                {quote}
               </p>
               
               <div className="flex items-center gap-4">
                 <div className="w-14 h-14 bg-secondary rounded-full flex items-center justify-center text-xl font-bold text-foreground border-2 border-primary/30">
-                  R
+                  {quote_author.charAt(0)}
                 </div>
                 <div>
-                  <div className="font-bold text-lg text-foreground">Ron</div>
-                  <div className="text-primary text-sm font-medium uppercase tracking-wider">Licensed Builder</div>
+                  <div className="font-bold text-lg text-foreground">{quote_author}</div>
+                  <div className="text-primary text-sm font-medium uppercase tracking-wider">{quote_author_title}</div>
                 </div>
               </div>
             </div>
@@ -69,17 +57,20 @@ export function WhyChooseMe() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="grid sm:grid-cols-2 gap-6"
           >
-            {reasons.map((reason, index) => (
-              <div 
-                key={index}
-                className="p-6 bg-secondary/30 border border-border/50 rounded-xl"
-                data-testid={`card-reason-${index}`}
-              >
-                <reason.icon className="w-8 h-8 text-primary mb-4" />
-                <h3 className="text-xl font-bold text-foreground mb-2">{reason.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">{reason.description}</p>
-              </div>
-            ))}
+            {reasons.map((reason, index) => {
+              const Icon = iconMap[reason.icon as IconName] ?? CheckCircle2;
+              return (
+                <div 
+                  key={index}
+                  className="p-6 bg-secondary/30 border border-border/50 rounded-xl"
+                  data-testid={`card-reason-${index}`}
+                >
+                  <Icon className="w-8 h-8 text-primary mb-4" />
+                  <h3 className="text-xl font-bold text-foreground mb-2">{reason.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{reason.description}</p>
+                </div>
+              );
+            })}
           </motion.div>
           
         </div>

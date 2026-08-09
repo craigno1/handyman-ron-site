@@ -5,31 +5,21 @@ import { Brush, CheckCircle2, Phone, ArrowLeft } from "lucide-react";
 import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import { Button } from "../components/ui/button";
-
-const highlights = [
-  "Patching and repair work — cracks, holes, water damage, and impact damage",
-  "Full room plaster sets for new builds and renovations",
-  "Cornice installation, replacement, and heritage profile matching",
-  "Render prep and scratch coat application for external surfaces",
-  "Smooth finish plastering ready for paint — no texture bleed-through",
-  "Fibrous plaster restoration for period homes",
-  "Wet area preparation — bathrooms, laundries, and ensuites",
-  "Ceiling repairs after roof leaks, with proper drying and re-coat",
-];
+import content from "../content/plastering.json";
+import globalContent from "../content/global.json";
 
 export default function PlasteringPage() {
+  const { phone_display, phone_raw } = globalContent;
+
   useEffect(() => {
-    document.title = "Plastering Services | Handyman Ron — Taradale & Mount Alexander Shire";
+    document.title = content.meta_title;
     let meta = document.querySelector('meta[name="description"]');
     if (!meta) {
       meta = document.createElement("meta");
       meta.setAttribute("name", "description");
       document.head.appendChild(meta);
     }
-    meta.setAttribute(
-      "content",
-      "Professional plastering in Taradale, Castlemaine, Kyneton and Mount Alexander Shire. Patching, full sets, cornice work, heritage repairs. 40+ years experience. Call Handyman Ron."
-    );
+    meta.setAttribute("content", content.meta_description);
   }, []);
 
   return (
@@ -58,7 +48,7 @@ export default function PlasteringPage() {
                 </div>
               </div>
               <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl leading-relaxed">
-                Smooth walls, sharp cornices, invisible repairs — plastering done the way it's supposed to be done, by someone who's been at it for over 40 years across central Victoria.
+                {content.hero_subtitle}
               </p>
             </motion.div>
           </div>
@@ -71,20 +61,14 @@ export default function PlasteringPage() {
 
               <article className="lg:col-span-2" data-testid="text-service-content">
                 <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
-                  <h2 className="text-3xl font-serif font-bold text-foreground mb-6">Plastering that disappears into the wall</h2>
-                  <p className="text-muted-foreground text-lg leading-relaxed mb-6">
-                    Good plastering is invisible. When Ron finishes a wall, it's flat, smooth, and ready for paint — there are no ridges at the joins, no patches that telegraph through once the colour goes on, no cornice lines that wander off-level. After more than 40 years in the trade, that level of finish is simply what he considers acceptable.
-                  </p>
-                  <p className="text-muted-foreground text-lg leading-relaxed mb-6">
-                    Plastering is one of those trades where the gaps between a rushed job and a careful one only become obvious later. A patch done in a hurry might look fine the day the painter arrives, but give it a year and the crack's back. Ron takes the time to prep properly — finding what caused the damage, treating it, and making sure the fix is permanent rather than cosmetic.
-                  </p>
-                  <p className="text-muted-foreground text-lg leading-relaxed mb-10">
-                    Whether you need a small crack patched before selling, a full room set as part of a renovation, or cornice matched in an older home where the profile hasn't been made for decades, Ron approaches each job with the same standard.
-                  </p>
+                  <h2 className="text-3xl font-serif font-bold text-foreground mb-6">{content.intro_heading}</h2>
+                  <p className="text-muted-foreground text-lg leading-relaxed mb-6">{content.intro_para1}</p>
+                  <p className="text-muted-foreground text-lg leading-relaxed mb-6">{content.intro_para2}</p>
+                  <p className="text-muted-foreground text-lg leading-relaxed mb-10">{content.intro_para3}</p>
 
-                  <h2 className="text-3xl font-serif font-bold text-foreground mb-6">Plastering services across Mount Alexander Shire</h2>
+                  <h2 className="text-3xl font-serif font-bold text-foreground mb-6">{content.highlights_heading}</h2>
                   <ul className="space-y-3 mb-10">
-                    {highlights.map((item, i) => (
+                    {content.highlights.map((item, i) => (
                       <li key={i} className="flex items-start gap-3">
                         <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0 mt-1" />
                         <span className="text-muted-foreground text-lg">{item}</span>
@@ -92,34 +76,24 @@ export default function PlasteringPage() {
                     ))}
                   </ul>
 
-                  <h2 className="text-3xl font-serif font-bold text-foreground mb-6">Heritage cornice and fibrous plaster work</h2>
-                  <p className="text-muted-foreground text-lg leading-relaxed mb-6">
-                    Taradale, Castlemaine, and the surrounding townships are full of Federation and Victorian-era homes with original plasterwork that deserves to be preserved. Fibrous plaster cornices, ceiling roses, dado rails, and decorative mouldings were made to last — but they do need skilled attention when they're damaged or when a renovation disturbs them.
-                  </p>
-                  <p className="text-muted-foreground text-lg leading-relaxed mb-6">
-                    Ron has spent decades repairing and restoring heritage plasterwork in central Victoria. He knows how to source matching profiles, how to join sections so the repair is undetectable, and when a section needs to be remade entirely. This kind of work requires patience and an eye for detail — you can't rush it and expect a good outcome.
-                  </p>
+                  <h2 className="text-3xl font-serif font-bold text-foreground mb-6">{content.heritage_heading}</h2>
+                  <p className="text-muted-foreground text-lg leading-relaxed mb-6">{content.heritage_para1}</p>
+                  <p className="text-muted-foreground text-lg leading-relaxed mb-6">{content.heritage_para2}</p>
 
-                  <h2 className="text-3xl font-serif font-bold text-foreground mb-6">Water damage and ceiling repairs</h2>
-                  <p className="text-muted-foreground text-lg leading-relaxed mb-6">
-                    A roof leak or burst pipe can destroy plasterwork quickly. The common mistake is patching before the wall or ceiling has fully dried — the moisture traps behind the new plaster and the problem returns within months. Ron identifies the source of the damage first, makes sure the substrate is properly dry, then repairs the plaster in stages so the result lasts.
-                  </p>
-                  <p className="text-muted-foreground text-lg leading-relaxed">
-                    Ron services the Taradale area and takes plastering work across Castlemaine, Kyneton, Malmsbury, Harcourt, Chewton, Woodend, and the surrounding Mount Alexander Shire and Macedon Ranges.
-                  </p>
+                  <h2 className="text-3xl font-serif font-bold text-foreground mb-6">{content.water_heading}</h2>
+                  <p className="text-muted-foreground text-lg leading-relaxed mb-6">{content.water_para1}</p>
+                  <p className="text-muted-foreground text-lg leading-relaxed">{content.water_para2}</p>
                 </motion.div>
               </article>
 
               <aside className="lg:col-span-1">
                 <div className="sticky top-28 bg-card border border-border rounded-2xl p-8 shadow-lg" data-testid="sidebar-cta">
-                  <h3 className="text-2xl font-serif font-bold text-foreground mb-3">Get a free quote</h3>
-                  <p className="text-muted-foreground mb-6 leading-relaxed">
-                    Send through a photo of the damage or the space, or give Ron a call to describe what you need.
-                  </p>
-                  <a href="tel:0407897092" data-testid="link-sidebar-call">
+                  <h3 className="text-2xl font-serif font-bold text-foreground mb-3">{content.sidebar_heading}</h3>
+                  <p className="text-muted-foreground mb-6 leading-relaxed">{content.sidebar_description}</p>
+                  <a href={`tel:${phone_raw}`} data-testid="link-sidebar-call">
                     <Button size="lg" className="w-full gap-2 mb-4 text-lg h-14">
                       <Phone className="w-5 h-5" />
-                      0407 897 092
+                      {phone_display}
                     </Button>
                   </a>
                   <Link href="/#contact">

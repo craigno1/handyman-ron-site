@@ -8,8 +8,9 @@ import { motion } from "framer-motion";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
+import globalContent from "../content/global.json";
+import homeContent from "../content/home.json";
 
-// We don't have a shadcn Select configured, so we'll build a standard HTML select that looks like the input
 const selectClass = "flex h-12 w-full rounded-md border border-input bg-background/50 px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 appearance-none";
 
 const formSchema = z.object({
@@ -35,15 +36,15 @@ export function Contact() {
   });
 
   const onSubmit = async (data: FormValues) => {
-    // Simulate API call
     await new Promise((resolve) => setTimeout(resolve, 1000));
     console.log("Form data:", data);
     setIsSubmitted(true);
     reset();
-    
-    // Reset success message after 5 seconds
     setTimeout(() => setIsSubmitted(false), 5000);
   };
+
+  const { contact_section } = homeContent;
+  const { phone_display, phone_raw } = globalContent;
 
   return (
     <section id="contact" className="py-24 bg-card border-t border-border">
@@ -53,12 +54,12 @@ export function Contact() {
           {/* Left Column: Info */}
           <div>
             <h2 className="text-3xl md:text-5xl font-serif font-bold text-foreground mb-6" data-testid="text-contact-title">
-              Get in touch.
+              {contact_section.heading}
             </h2>
             <div className="h-1 w-24 bg-primary rounded-full mb-8" />
             
             <p className="text-xl text-muted-foreground mb-12 max-w-md leading-relaxed">
-              Ready to start your project or need something fixed? Fill out the form or give me a direct call. I aim to respond to all inquiries within 24 hours.
+              {contact_section.description}
             </p>
             
             <div className="space-y-8">
@@ -68,8 +69,8 @@ export function Contact() {
                 </div>
                 <div>
                   <h3 className="text-sm font-bold text-muted-foreground uppercase tracking-wider mb-1">Direct Line</h3>
-                  <a href="tel:0407897092" className="text-3xl font-serif font-bold text-foreground hover:text-primary transition-colors">
-                    0407 897 092
+                  <a href={`tel:${phone_raw}`} className="text-3xl font-serif font-bold text-foreground hover:text-primary transition-colors">
+                    {phone_display}
                   </a>
                 </div>
               </div>
@@ -79,9 +80,11 @@ export function Contact() {
                   <MapPin className="w-6 h-6 text-primary" />
                 </div>
                 <div>
-                  <h3 className="text-sm font-bold text-muted-foreground uppercase tracking-wider mb-1">Service Area</h3>
+                  <h3 className="text-sm font-bold text-muted-foreground uppercase tracking-wider mb-1">
+                    {contact_section.service_area_label}
+                  </h3>
                   <p className="text-xl font-medium text-foreground">
-                    Taradale, Castlemaine, Kyneton,<br />Malmsbury, Woodend, and the<br />wider Mount Alexander Shire<br />and Macedon Ranges.
+                    {contact_section.service_area}
                   </p>
                 </div>
               </div>
@@ -168,7 +171,6 @@ export function Contact() {
                     <option value="tiny-house">Tiny House Building</option>
                     <option value="other">Other / Maintenance</option>
                   </select>
-                  {/* Custom dropdown arrow for native select styling */}
                   <div className="absolute right-4 top-10 pointer-events-none text-muted-foreground">
                     <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M3.13523 6.15803C3.3241 5.95657 3.64052 5.94637 3.84197 6.13523L7.5 9.56464L11.158 6.13523C11.3595 5.94637 11.6759 5.95657 11.8648 6.15803C12.0536 6.35949 12.0434 6.67591 11.842 6.86477L7.84197 10.6148C7.64964 10.7951 7.35036 10.7951 7.15803 10.6148L3.15803 6.86477C2.95657 6.67591 2.94637 6.35949 3.13523 6.15803Z" fill="currentColor" fillRule="evenodd" clipRule="evenodd"></path>

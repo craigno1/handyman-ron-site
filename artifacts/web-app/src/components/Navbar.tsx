@@ -2,14 +2,8 @@ import * as React from "react";
 import { Menu, X, Phone, ChevronDown } from "lucide-react";
 import { Button } from "./ui/button";
 import { Link, useLocation } from "wouter";
-
-const serviceLinks = [
-  { name: "Carpentry", href: "/carpentry" },
-  { name: "Plastering", href: "/plastering" },
-  { name: "Renovations", href: "/renovations" },
-  { name: "Extensions", href: "/extensions" },
-  { name: "Tiny House Building", href: "/tiny-house-building" },
-];
+import globalContent from "../content/global.json";
+import servicesContent from "../content/services.json";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -17,7 +11,14 @@ export function Navbar() {
   const [location] = useLocation();
   const dropdownRef = React.useRef<HTMLDivElement>(null);
 
-  // Close dropdown when clicking outside
+  const { phone_display, phone_raw, site_name } = globalContent;
+  const [namePart, accentPart] = ["Handyman", "Ron"];
+
+  const serviceLinks = servicesContent.services.map((s) => ({
+    name: s.title,
+    href: `/${s.slug}`,
+  }));
+
   React.useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
@@ -28,7 +29,6 @@ export function Navbar() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Close mobile menu on route change
   React.useEffect(() => {
     setIsOpen(false);
     setServicesOpen(false);
@@ -43,7 +43,7 @@ export function Navbar() {
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center">
             <Link href="/" className="font-serif font-bold text-2xl text-foreground" data-testid="link-logo">
-              Handyman<span className="text-primary">Ron</span>
+              {namePart}<span className="text-primary">{accentPart}</span>
             </Link>
           </div>
 
@@ -97,10 +97,10 @@ export function Navbar() {
               </>
             )}
 
-            <a href="tel:0407897092" className="group" data-testid="link-nav-call">
+            <a href={`tel:${phone_raw}`} className="group" data-testid="link-nav-call">
               <Button variant="default" className="gap-2 shadow-md">
                 <Phone className="w-5 h-5 group-hover:animate-pulse" />
-                0407 897 092
+                {phone_display}
               </Button>
             </a>
           </div>
@@ -166,10 +166,10 @@ export function Navbar() {
               Contact
             </a>
             <div className="pt-4">
-              <a href="tel:0407897092" onClick={() => setIsOpen(false)} data-testid="link-mobile-call">
+              <a href={`tel:${phone_raw}`} onClick={() => setIsOpen(false)} data-testid="link-mobile-call">
                 <Button className="w-full h-14 text-lg gap-2">
                   <Phone className="w-5 h-5" />
-                  0407 897 092
+                  {phone_display}
                 </Button>
               </a>
             </div>

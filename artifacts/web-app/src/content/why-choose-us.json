@@ -1,0 +1,28 @@
+{
+  "heading": "Why locals keep coming back to Ron.",
+  "quote": "I take on work I'm proud to put my name on. That means I don't rush, I don't cut corners, and I answer my phone.",
+  "quote_author": "Ron",
+  "quote_author_title": "Licensed Builder",
+  "reasons": [
+    {
+      "icon": "Clock",
+      "title": "40+ Years on the Tools",
+      "description": "Four decades of hands-on trade work across central Victoria. No guesswork, no learning on your job — just deep experience applied to your project."
+    },
+    {
+      "icon": "MapPin",
+      "title": "Central Victoria Local",
+      "description": "Based in Taradale, in the heart of Mount Alexander Shire. I know the local suppliers, the region's older housing stock, and what these homes actually need."
+    },
+    {
+      "icon": "CheckCircle2",
+      "title": "No Subcontractor Roulette",
+      "description": "When you hire Ron, you get Ron. I do the work myself so I can guarantee the quality."
+    },
+    {
+      "icon": "BadgeDollarSign",
+      "title": "Straight-Up Pricing",
+      "description": "Detailed quotes with no hidden extras. If we hit a snag, we talk about it before I spend your money."
+    }
+  ]
+}
